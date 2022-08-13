@@ -1,4 +1,3 @@
 # Store
 
 Coding Challenge
-T
