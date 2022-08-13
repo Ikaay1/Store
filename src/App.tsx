@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { CssBaseline } from '@material-ui/core';
 
-import Basket from './components/Basket';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Products from './components/Products';
@@ -89,41 +87,18 @@ const App = () => {
     };
 
     return (
-        <Router>
-            <div>
-                <CssBaseline />
-                <NavBar
-                    basketItems={cartItems.length}
-                    totalAmount={totalAmount}
-                />
-                <Routes>
-                    <Route
-                        path='/'
-                        element={
-                            <Products
-                                cart={cartItems}
-                                onAdd={onAdd}
-                                onRemove={onRemove}
-                            />
-                        }
-                    />
-
-                    <Route
-                        path='/basket'
-                        element={
-                            <Basket
-                                cartItems={cartItems}
-                                totalPrice={totalPrice}
-                                onRemove={onRemove}
-                                onAdd={onAdd}
-                                onBuy={onBuy}
-                            />
-                        }
-                    />
-                </Routes>
-                <Footer />
-            </div>
-        </Router>
+        <div>
+            <CssBaseline />
+            <NavBar basketItems={cartItems.length} totalAmount={totalAmount} />
+            <Products
+                cart={cartItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                onBuy={onBuy}
+                totalPrice={totalPrice}
+            />
+            <Footer />
+        </div>
     );
 };
 

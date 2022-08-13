@@ -1,7 +1,5 @@
 import './style.css';
 
-import { Link } from 'react-router-dom';
-
 import {
 	AppBar,
 	Badge,
@@ -25,8 +23,6 @@ const NavBar = ({
                 <Container>
                     <Toolbar>
                         <Typography
-                            component={Link}
-                            to='/'
                             variant='h6'
                             className='custom-title'
                             color='inherit'
@@ -45,8 +41,6 @@ const NavBar = ({
                         </div>
                         <div className='basket-wrapper'>
                             <IconButton
-                                component={Link}
-                                to='/basket'
                                 aria-label='Show basket contents'
                                 color='inherit'
                             >

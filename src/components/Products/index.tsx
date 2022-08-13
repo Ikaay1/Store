@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Container, Grid } from '@material-ui/core';
 
 import Banner from '../Banner';
+import Basket from '../Basket';
 import Product from '../Product';
 import Spinner from '../Spinner';
 
@@ -33,10 +34,14 @@ const Products = ({
     cart,
     onAdd,
     onRemove,
+    totalPrice,
+    onBuy,
 }: {
     cart: ProductInterface[];
     onAdd: (arg: ProductInterface) => void;
     onRemove: (arg: ProductInterface) => void;
+    totalPrice: number;
+    onBuy: () => void;
 }) => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -69,22 +74,33 @@ const Products = ({
     if (!products.length) return <Spinner />;
 
     return (
-        <div>
-            <Banner />
-            <Container id='products'>
-                <Grid container spacing={4}>
-                    {products.map((product: ProductInterface) => (
-                        <Grid key={product.id} item xs={12} sm={6} md={4}>
-                            <Product
-                                product={product}
-                                cart={cart}
-                                onAdd={onAdd}
-                                onRemove={onRemove}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
+        <div className='flexContainer'>
+            <div className='items'>
+                <Banner />
+                <Container id='products'>
+                    <Grid container spacing={4}>
+                        {products.map((product: ProductInterface) => (
+                            <Grid key={product.id} item xs={12} sm={6} md={4}>
+                                <Product
+                                    product={product}
+                                    cart={cart}
+                                    onAdd={onAdd}
+                                    onRemove={onRemove}
+                                />
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Container>
+            </div>
+            <div className='basket'>
+                <Basket
+                    cartItems={cart}
+                    totalPrice={totalPrice}
+                    onRemove={onRemove}
+                    onAdd={onAdd}
+                    onBuy={onBuy}
+                />
+            </div>
         </div>
     );
 };

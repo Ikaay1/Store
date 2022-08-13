@@ -47,9 +47,16 @@ const Basket = ({
     if (!cartItems.length) return <Banner />;
     return (
         <Container id='basket'>
-            <Grid container justify='center' spacing={4}>
+            <Grid justify='center' spacing={4}>
                 {cartItems.map((item) => (
-                    <Grid key={item.id} item xs={12} sm={6} md={4}>
+                    <Grid
+                        key={item.id}
+                        style={{marginBottom: '2rem'}}
+                        item
+                        xs={12}
+                        sm={12}
+                        md={12}
+                    >
                         <CustomCard
                             product={item}
                             cart={cartItems}
