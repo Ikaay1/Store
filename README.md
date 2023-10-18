@@ -1,3 +1,3 @@
 # Store
 
-Coding Challenge - E-commerce web store
+Coding Challenge: E-commerce web store
